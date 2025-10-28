@@ -31,7 +31,8 @@ SECRET_KEY = 'django-insecure-8mxu*oj-yiaq%r-#)#&-q@=$-$7=krur^^xh^gxf3!6(4yk$v1
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['medialert-j74r.onrender.com', 'localhost', '127.0.0.1']
+
 
 
 # Application definition
