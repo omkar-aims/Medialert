@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+  <meta charset="UTF-8" />
+  <title>Reminder Details</title>
+  <link rel="stylesheet" href="{% static 'medicine_management/css/reminder_details.css' %}" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="icon-wrapper">
+      <i class="fa-solid fa-bell"></i>
+    </div>
+    <h2>When would you like to be reminded?</h2>
+
+    <form method="POST" action="{% url 'reminder_details' %}">
+      {% csrf_token %}
+
+      <!-- Hidden fields for medicine name and recurrence -->
+      <input type="hidden" name="medicine_name" value="{{ medicine_name }}">
+      <input type="hidden" name="recurrence" value="{{ recurrence }}">
+
+     <!-- Wrap these two inputs inside a div with a class, e.g. "input-row" -->
+      <div class="input-row">
+        <div class="input-group">
+          <label for="reminder_time">Reminder Time:</label>
+          <input type="time" id="reminder_time" name="reminder_time" required class="input-field">
+        </div>
+
+        <div class="input-group">
+          <label for="dose">Dose (e.g., 1 tablet):</label>
+          <input type="text" id="dose" name="dose" required placeholder="Enter dose" class="input-field">
+        </div>
+      </div>
+
+
+      <div class="notification-method">
+        <input type="radio" id="notify_email" name="notification_method" value="email" checked>
+        <label for="notify_email" class="option">Email</label>
+
+        <input type="radio" id="notify_phone" name="notification_method" value="sms">
+        <label for="notify_phone" class="option">Phone</label>
+      </div>
+
+      <!-- Email Field -->
+      <div id="email-field">
+        <input type="email" id="notification_email" name="notification_email" placeholder="Enter your email" class="input-field">
+      </div>
+
+      <!-- Phone Field -->
+      <div id="phone-field" style="display:none;">
+        <input type="text" id="notification_phone" name="notification_phone" placeholder="Enter your phone number" class="input-field">
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit" class="dashboard-button">Set Reminder</button>
+    </form>
+  </div>
+
+  <!-- JS for toggling email/phone fields -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const emailRadio = document.getElementById('notify_email');
+      const phoneRadio = document.getElementById('notify_phone');
+      const emailField = document.getElementById('email-field');
+      const phoneField = document.getElementById('phone-field');
+
+      emailRadio.addEventListener('change', () => {
+        emailField.style.display = 'block';
+        phoneField.style.display = 'none';
+      });
+
+      phoneRadio.addEventListener('change', () => {
+        emailField.style.display = 'none';
+        phoneField.style.display = 'block';
+      });
+    });
+  </script>
+</body>
+</html>

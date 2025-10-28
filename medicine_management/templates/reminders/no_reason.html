@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+  <meta charset="UTF-8">
+  <title>No Refill Reason</title>
+  <link rel="stylesheet" href="{% static 'medicine_management/css/no_reason.css' %}">
+</head>
+<body>
+  <div class="container">
+    <h2>What do you take this for?</h2>
+
+    <form method="POST" action="{% url 'submit_no_reason' %}">
+      {% csrf_token %}
+      <label for="reason">This information will help us provide better support. </label>
+      <input type="text" name="reason" id="reason" placeholder="Enter your reason..." required>
+
+      <button type="submit" class="submit-btn">Add</button>
+    </form>
+  </div>
+</body>
+</html>

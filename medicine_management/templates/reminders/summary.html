@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+  <meta charset="UTF-8" />
+  <title>Summary</title>
+  <link rel="stylesheet" href="{% static 'medicine_management/css/summary.css' %}" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #6e90ff, #aa407e);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      background-color: rgba(255, 255, 255, 0.95);
+      border-radius: 12px;
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+      padding: 40px;
+      width: 100%;
+      max-width: 600px;
+      text-align: left;
+    }
+    h2 {
+      text-align: center;
+      color: #4a90e2;
+      font-size: 1.8rem;
+      margin-bottom: 25px;
+      font-weight: 600;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 30px;
+    }
+    th, td {
+      padding: 12px 15px;
+      border-bottom: 1px solid #ddd;
+      text-align: left;
+      font-size: 1rem;
+      color: #333;
+    }
+    th {
+      background-color: #4a90e2;
+      color: white;
+    }
+    .edit-buttons a {
+      margin-right: 15px;
+      background-color: #4a90e2;
+      color: white;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 8px;
+      transition: background-color 0.3s ease;
+    }
+    .edit-buttons a:hover {
+      background-color: #357ABD;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Review Your Medicine Details</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Medicine name</th>
+          <th>Reminder</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Medicine Name</td>
+          <td>{{ medicine_data.medicine_name|default:"Not provided" }}</td>
+        </tr>
+        <tr>
+          <td>Recurrence</td>
+          <td>
+            {% if medicine_data.recurrence %}
+              {% if medicine_data.recurrence == 'once_daily' %}Once a day{% endif %}
+              {% if medicine_data.recurrence == 'twice_daily' %}Twice a day{% endif %}
+              {% if medicine_data.recurrence == 'weekly' %}Weekly{% endif %}
+              {% if medicine_data.recurrence == 'custom' %}Custom{% endif %}
+            {% else %}
+              Not provided
+            {% endif %}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="edit-buttons">
+      <a href="{% url 'add_medicine' %}">Edit Medicine Name</a>
+      <a href="{% url 'recurrence_view' %}">Edit Recurrence</a>
+    </div>
+  </div>
+  <script>
+  setTimeout(() => {
+    const messages = document.querySelectorAll('.message');
+    messages.forEach(msg => {
+      msg.style.transition = 'opacity 1s ease';
+      msg.style.opacity = '0';
+      setTimeout(() => msg.remove(), 1000);
+    });
+  }, 5000);
+</script>
+</body>
+</html>
+

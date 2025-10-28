@@ -1,0 +1,86 @@
+ body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, #6e90ff, #aa407e);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background-color: rgba(255, 255, 255, 0.925);
+      border-radius: 12px;
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+      padding: 40px;
+      width: 100%;
+      max-width: 950px;
+      text-align: center;
+    }
+
+    h2 {
+      color: #4a90e2;
+      font-size: 2rem;
+      margin-bottom: 25px;
+      font-weight: 600;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th, td {
+      padding: 12px;
+      text-align: left;
+      border: 1px solid #ddd;
+      font-size: 1rem;
+    }
+
+    th {
+      background-color: #4a90e2;
+      color: white;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    tr:hover {
+      background-color: #f1f1f1;
+    }
+
+    .status-processing {
+      color: orange;
+      font-weight: bold;
+    }
+
+    .status-sent {
+      color: green;
+      font-weight: bold;
+    }
+
+    .status-failed {
+      color: red;
+      font-weight: bold;
+    }
+
+    .set-reminder-link {
+      display: inline-block;
+      background-color: #4a90e2;
+      color: white;
+      padding: 15px 30px;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      margin-top: 20px;
+    }
+
+    .set-reminder-link:hover {
+      background-color: #357ab7;
+      transform: scale(1.05);
+    }

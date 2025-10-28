@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Medicine Reminder</title>
+  <link rel="stylesheet" href="{% static 'medicine_management/css/mark_taken_page.css' %}">
+</head>
+<body>
+  <div class="container">
+    <h1>Your Medicine Reminder</h1>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Medicine Name</th>
+          <th>Action</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{ reminder.medicine_name }}</td>
+          <td>
+            <a href="{% url 'mark_medicine_taken' reminder.id %}" class="taken-btn">Mark as Taken</a>
+          </td>
+          <td>
+            {% if reminder.is_taken %}
+              <span class="status-taken">Taken</span>
+            {% else %}
+              <span class="status-not-taken">Not Taken</span>
+            {% endif %}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>

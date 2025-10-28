@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    {% load static %}
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/dashboard//dashboard.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h2>Welcome to Medialert!!</h2>
+
+        <a href="{% url 'add_medicine' %}" class="dashboard-button">Set Reminder</a>
+    </div>
+</body>
+</html>

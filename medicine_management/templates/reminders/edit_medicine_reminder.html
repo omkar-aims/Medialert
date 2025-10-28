@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Medicine Reminder</title>
+  <link rel="stylesheet" href="{% static 'medicine_management/css/edit_medicine_reminder.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+  <div class="container">
+    <h2>Edit Medicine Reminder</h2>
+
+    {% if messages %}
+      {% for message in messages %}
+        <p class="message {{ message.tags }}">{{ message }}</p>
+      {% endfor %}
+    {% endif %}
+
+    <form method="POST" class="edit-form">
+      {% csrf_token %}
+
+      <div class="form-grid">
+        <div class="form-field">
+            <label for="{{ form.medicine_name.id_for_label }}">Medicine Name</label>
+            {{ form.medicine_name }}
+        </div>
+
+        <div class="form-field">
+            <label for="{{ form.reminder_time.id_for_label }}">Reminder Time</label>
+            <input type="time" name="reminder_time" id="id_reminder_time" value="{{ form.reminder_time.value }}">
+        </div>
+
+         <div class="form-field">
+            <label for="{{ form.notification_method.id_for_label }}">Notification Method</label>
+            {{ form.notification_method }}
+        </div>
+
+        <div class="form-field">
+            <label for="{{ form.recurrence.id_for_label }}">Recurrence</label>
+            {{ form.recurrence }}
+        </div>
+
+        <div class="form-field" id="email-field" style="display: none;">
+            <label for="{{ form.notification_email.id_for_label }}">Notification Email</label>
+            {{ form.notification_email }}
+        </div>
+
+       <div class="form-field" id="phone-field" style="display: none;">
+            <label for="{{ form.notification_phone.id_for_label }}">Notification Phone</label>
+            {{ form.notification_phone }}
+        </div>
+      </div>
+
+      <button type="submit" class="submit-btn">Save</button>
+    </form>
+
+    <div class="form-container">
+      <a class="register-link" href="{% url 'medicine_reminders' %}">Cancel</a>
+    </div>
+  </div>
+
+  <script src="{% static 'medicine_management/js/edit_medicine_reminder.js' %}"></script>
+</body>
+</html>

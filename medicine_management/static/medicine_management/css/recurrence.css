@@ -1,0 +1,99 @@
+body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, #6e90ff, #aa407e);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background-color: rgba(255, 255, 255, 0.95);
+      border-radius: 12px;
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+      padding: 40px;
+      width: 100%;
+      max-width: 600px;
+      text-align: center;
+    }
+
+    .icon-wrapper {
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .icon-wrapper i {
+      font-size: 4rem;
+      background: linear-gradient(10deg, #fafafa, #0e0b0bf8);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+      filter: drop-shadow(0px 4px 6px rgba(233, 225, 225, 0.3));
+      animation: float 3s ease-in-out infinite;
+    }
+
+    h2 {
+      color: #4a90e2;
+      font-size: 1.6rem;
+      margin-bottom: 30px;
+      font-weight: 600;
+    }
+
+    form {
+      text-align: center; 
+    }
+
+    input[type="radio"] {
+      display: none;
+    }
+
+    label.option {
+      background-color: #f0f0f0;
+      border-radius: 10px;
+      padding: 12px 24px;
+      font-size: 1rem;
+      font-weight: 500;
+      color: #333;
+      cursor: pointer;
+      user-select: none;
+      border: 2px solid transparent;
+      margin: 8px;
+      display: inline-block;
+      min-width: 130px;
+      transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+      box-sizing: border-box;
+    }
+
+    label.option:hover {
+      background-color: #d0e1ff;
+      border-color: #4a90e2;
+    }
+
+    input[type="radio"]:checked + label.option {
+      background-color: #4a90e2;
+      color: white;
+      border-color: #4a90e2;
+      font-weight: 700;
+    }
+
+    .dashboard-button {
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    .dashboard-button:hover {
+      background-color: #388e3c;
+      transform: scale(1.05);
+    }

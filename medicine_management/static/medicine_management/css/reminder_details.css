@@ -1,0 +1,151 @@
+body {
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(135deg, #6e90ff, #aa407e);
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  width: 100%;
+  max-width: 500px;
+  text-align: left;
+}
+
+.icon-wrapper {
+  text-align: center;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.icon-wrapper i {
+  font-size: 4rem;
+  background: linear-gradient(10deg, #c9c638, #e2dfdff8);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  filter: drop-shadow(0px 4px 6px rgba(233, 225, 225, 0.3));
+  animation: float 3s ease-in-out infinite;
+}
+
+h2 {
+  text-align: center;
+  color: #4a90e2;
+  font-size: 1.8rem;
+  margin-bottom: 25px;
+  font-weight: 600;
+}
+
+label {
+  font-size: 1rem;
+  margin-top: 0;
+  display: block;
+  color: #333;
+  font-weight: 500;
+}
+
+.input-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 15px;
+}
+
+.input-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-group label {
+  margin-bottom: 6px;
+  font-weight: 500;
+  color: #333;
+}
+
+.input-field {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  box-sizing: border-box;
+  margin-bottom: 0; /* remove extra spacing between side-by-side inputs */
+}
+
+.input-field:focus {
+  border-color: #4a90e2;
+  outline: none;
+}
+
+.dashboard-button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 14px 24px;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-top: 20px;
+}
+
+.dashboard-button:hover {
+  background-color: #388e3c;
+  transform: scale(1.03);
+}
+
+/* Container for the radio buttons */
+.notification-method {
+  display: flex;
+  gap: 20px;
+  margin-top: 10px; /* reduced space above */
+  margin-bottom: 20px;
+}
+
+/* Hide the native radio buttons */
+.notification-method input[type="radio"] {
+  display: none;
+}
+
+/* Style the labels as pill-shaped buttons */
+.notification-method label.option {
+  display: inline-block;
+  padding: 10px 22px;
+  border: 2px solid #4a90e2;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: 600;
+  color: #4a90e2;
+  user-select: none;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+  text-align: center;
+}
+
+/* Checked state styles */
+.notification-method input[type="radio"]:checked + label.option {
+  background-color: #05407a;
+  color: white;
+  border-color: #050505;
+}
+
+/* Hover effect */
+.notification-method label.option:hover {
+  background-color: #dbe9fd;
+}
+
+/* Adjust the input fields inside the email and phone containers */
+#email-field, #phone-field {
+  margin-top: 5px;
+}

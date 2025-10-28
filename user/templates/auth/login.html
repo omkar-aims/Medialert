@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="{% static 'auth/css/login.css' %}">
+</head>
+<body>
+  <div class="container">
+    <h2>Login</h2>
+
+    {% if messages %}
+      {% for message in messages %}
+        <p class="message {{ message.tags }}">{{ message }}</p>
+      {% endfor %}
+    {% endif %}
+
+    <form method="POST">
+      {% csrf_token %}
+      
+      <div class="form-field">
+        <label for="id_username">Username</label>
+        {{ form.username }}
+      </div>
+
+      <div class="form-field">
+        <label for="id_password">Password</label>
+        {{ form.password }}
+      </div>
+
+      <button type="submit">Login</button>
+    </form>
+
+    <div class="form-container">
+      <p>Don’t have an account? <a class="register-link" href="{% url 'register' %}">Register</a></p>
+    </div>
+  </div>
+    <script src="{% static 'auth/js/login.js' %}"></script>
+</body>
+</html>

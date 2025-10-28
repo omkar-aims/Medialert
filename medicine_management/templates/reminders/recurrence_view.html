@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+<head>
+  <meta charset="UTF-8" />
+  <title>Recurrence</title>
+  <link rel="stylesheet" href="{% static 'medicine_management/css/recurrence.css' %}" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="icon-wrapper">
+      <i class="fa-solid fa-clock"></i>
+    </div>
+    <h2>How often do you take this medicine?</h2>
+
+    <form method="POST" action="{% url 'recurrence_view' %}">
+      {% csrf_token %}
+
+      <input type="hidden" name="medicine_name" value="{{ medicine_name }}" />
+
+      <!-- ✅ FIXED VALUES BELOW -->
+      <input type="radio" id="once_a_day" name="recurrence" value="once_a_day" required />
+      <label for="once_a_day" class="option">Once a day</label>
+
+      <input type="radio" id="twice_a_day" name="recurrence" value="twice_a_day" />
+      <label for="twice_a_day" class="option">Twice a day</label>
+
+      <input type="radio" id="thrice_a_day" name="recurrence" value="thrice_a_day" />
+      <label for="thrice_a_day" class="option">Thrice a day</label>
+
+      <input type="radio" id="every_monday" name="recurrence" value="every_monday" />
+      <label for="every_monday" class="option">Every Monday</label>
+
+      <input type="radio" id="every_tuesday" name="recurrence" value="every_tuesday" />
+      <label for="every_tuesday" class="option">Every Tuesday</label>
+
+      <input type="radio" id="every_wednesday" name="recurrence" value="every_wednesday" />
+      <label for="every_wednesday" class="option">Every Wednesday</label>
+
+      <input type="radio" id="every_thursday" name="recurrence" value="every_thursday" />
+      <label for="every_thursday" class="option">Every Thursday</label>
+
+      <input type="radio" id="every_friday" name="recurrence" value="every_friday" />
+      <label for="every_friday" class="option">Every Friday</label>
+
+      <input type="radio" id="every_saturday" name="recurrence" value="every_saturday" />
+      <label for="every_saturday" class="option">Every Saturday</label>
+
+      <input type="radio" id="every_sunday" name="recurrence" value="every_sunday" />
+      <label for="every_sunday" class="option">Every Sunday</label>
+
+      <input type="radio" id="today" name="recurrence" value="today" />
+      <label for="today" class="option">Today</label>
+
+      <input type="radio" id="every_day" name="recurrence" value="every_day" />
+      <label for="every_day" class="option">Every day</label>
+
+      <button type="submit" class="dashboard-button">Next</button>
+    </form>
+  </div>
+</body>
+</html>

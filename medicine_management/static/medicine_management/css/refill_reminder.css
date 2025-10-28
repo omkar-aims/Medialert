@@ -1,0 +1,77 @@
+body {
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(135deg, #6e90ff, #aa407e);
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+}
+
+.icon-wrapper {
+  text-align: center;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.icon-wrapper i {
+  font-size: 4rem;
+  background: linear-gradient(10deg, #fafafa, #0d0d0ef8);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  filter: drop-shadow(0px 4px 6px rgba(233, 225, 225, 0.3));
+  animation: float 3s ease-in-out infinite;
+}
+
+h2 {
+  color: #4a90e2;
+  font-size: 1.6rem;
+  margin-bottom: 30px;
+  font-weight: 600;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.dashboard-button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  flex: 1;
+  max-width: 48%;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.dashboard-button:hover {
+  background-color: #388e3c;
+  transform: scale(1.05);
+}
+
+.dashboard-button.no {
+  background-color: #dc3545;
+}
+
+.dashboard-button.no:hover {
+  background-color: #a32b27;
+}

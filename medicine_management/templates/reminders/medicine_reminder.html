@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Set Medicine Reminder</title>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  />
+
+  <script>
+  function toggleNotificationFields() {
+    const notificationMethod = document.getElementById("id_notification_method").value;
+    const emailField = document.getElementById("email_field");
+    const phoneField = document.getElementById("phone_field");
+
+    // Hide both fields initially
+    emailField.style.display = "none";
+    phoneField.style.display = "none";
+
+    // Show the respective field based on the selected notification method
+    if (notificationMethod === "email") {
+      emailField.style.display = "block";
+    } else if (notificationMethod === "sms") {
+      phoneField.style.display = "block";
+    }
+  }
+
+  // Call the toggle function on page load to set initial state
+  window.onload = function() {
+    toggleNotificationFields();
+  };
+
+  window.addEventListener('DOMContentLoaded', () => {
+    const messages = document.querySelectorAll('.message');
+    messages.forEach(msg => {
+      setTimeout(() => {
+        // You can either hide or fade out; here we just hide
+        msg.style.display = 'none';
+      }, 5000); // 5000ms = 5 seconds
+    });
+  });
+
+</script>
+<link rel="stylesheet" href="{% static 'medicine_management\css\m3.css' %}">
+</head>
+<body>
+  <div class="container">
+    <h2>Set Medicine Reminder</h2>
+
+    {% if messages %}
+      {% for message in messages %}
+        <p class="message {{ message.tags }}">{{ message }}</p>
+      {% endfor %}
+    {% endif %}
+
+    <form method="POST">
+      {% csrf_token %}
+
+      <div class="form-field">
+        <label for="id_medicine_name">Medicine Name</label>
+        {{ form.medicine_name }}
+      </div>
+
+      <div class="form-field">
+        <label for="id_recurrence">Reminder Frequency</label>
+        <select name="recurrence" id="id_recurrence" class="form-control">
+          <option value="every_day">Every Day</option>
+          <option value="every_monday">Every Monday</option>
+          <option value="every_tuesday">Every Tuesday</option>
+          <option value="every_wednesday">Every Wednesday</option>
+          <option value="every_thursday">Every Thursday</option>
+          <option value="every_friday">Every Friday</option>
+          <option value="every_saturday">Every Saturday</option>
+          <option value="every_sunday">Every Sunday</option>
+          <option value="today">Today</option>
+        </select>
+      </div>
+
+      <div class="form-field">
+        <label for="id_reminder_time">Reminder Time</label>
+        <input type="time" id="id_reminder_time" name="reminder_time" required>
+      </div>
+
+      <div class="form-field">
+        <label for="id_notification_method">Notification Method</label>
+        <select name="notification_method" id="id_notification_method" class="form-control" onchange="toggleNotificationFields()">
+            <option value="" selected></option>
+            <option value="email">Email</option>
+            <option value="sms">SMS</option>
+        </select>
+      </div>
+
+      <!-- Email input field (hidden by default) -->
+      <div id="email_field" class="notification-input">
+        <label for="id_email">Email Address</label>
+        <input type="email" id="id_notification_email" name="notification_email" placeholder="Enter your email">
+      </div>
+
+      <!-- Phone number input field (hidden by default) -->
+      <div id="phone_field" class="notification-input">
+        <label for="id_phone">Phone Number</label>
+        <input type="tel" id="id_phone" name="phone" placeholder="Enter your phone number">
+      </div>
+
+      <button type="submit">Add Reminder</button>
+    </form>
+
+    <div class="form-container">
+      <p><a href="{% url 'medicine_reminders' %}">View My Reminders</a></p>
+    </div>
+  </div>
+  <script src="{% static 'medicine_management\js\medicine_reminders.js' %}"></script>
+</body>
+</html>
